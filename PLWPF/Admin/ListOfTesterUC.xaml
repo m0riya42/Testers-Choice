@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="PLWPF.Admin.ListOfTesterUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:local="clr-namespace:PLWPF.Admin"
+             xmlns:BE="clr-namespace:BE;assembly=BE" 
+             xmlns:BL="clr-namespace:BL;assembly=BL"
+             mc:Ignorable="d" 
+     d:DesignHeight="340" d:DesignWidth="560" Background="Transparent" Width="auto" Height="358" >
+    <Border BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left"  Height="358" Margin="1,1,0,0" VerticalAlignment="Top" Width="559" CornerRadius="20,20,20,20" Background="White">
+        <Grid>
+            <Label  Name="titleLabel" Content="All Testers:" Style="{StaticResource RegularLabel}"  FontSize="20" Height="Auto"  HorizontalContentAlignment="Center" Margin="133,15,166.8,310.8" Width="Auto"/>
+            <DataGrid x:Name="GridAllTesters" Margin="9,54,13.8,26.8" BorderBrush="Transparent"  Background="Transparent" IsReadOnly="True" AlternationCount="{Binding Items.Count, RelativeSource={RelativeSource Self}}" EnableRowVirtualization="False" AutoGenerateColumns="False" >
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Width="*" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Last Name" Width="*" Binding="{Binding LName}"/>
+                    <DataGridTextColumn Header="ID" Width="80" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="Cellphone" Width="80" Binding="{Binding CallNum}"/>
+                    <DataGridTextColumn Header="Car Type" Width="85" Binding="{Binding car}"/>
+                    <DataGridTextColumn Header="Seniority" Width="65" Binding="{Binding seniority}"/>
+                    <DataGridTextColumn Header="Tests" Width="45" Binding="{Binding MaxTests}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!--if there is not future test-->
+            <Label x:Name="NoTest" Content="**There are no testers in the system" Style="{StaticResource RegularLabel}" Width="Auto" FontWeight="Regular" Margin="22,33,235.8,302.8" Visibility="Hidden"/>
+            <Label x:Name="FilterTest" Content= "Filter by:" Style="{StaticResource ResourceKey=RegularLabel}" Width="Auto" Margin="22,16,456.8,319.8"/>
+            <ComboBox x:Name="ChooseTesterCriterion" HorizontalAlignment="Left" Margin="100,16,0,0" VerticalAlignment="Top" Width="78" Height="23" SelectionChanged="ChooseTesterCriterion_SelectionChanged">
+                <ComboBoxItem Content=""/>
+                <ComboBoxItem Content="Name"/>
+                <ComboBoxItem Content="Car Type"/>
+                <ComboBoxItem Content="Seniority"/>
+            </ComboBox>
+        </Grid>
+    </Border>
+</UserControl>

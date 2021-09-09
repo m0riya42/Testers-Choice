@@ -1,0 +1,6 @@
+﻿<p><strong>You've got new Message from:</strong> ###ChangeNAME###</p>
+<p><strong>E-mail to return a message:</strong> ###ChangeMAIL###</p>
+<p>&nbsp;</p>
+<p><strong>Mail Content:&nbsp;</strong></p>
+<p>###MessageHERE###</p>
+<p>&nbsp;</p>

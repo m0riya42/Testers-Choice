@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="PLWPF.trainee.TestInformationUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PLWPF.trainee"
+             mc:Ignorable="d" 
+          
+    d:DesignHeight="340" d:DesignWidth="560" Background="Transparent" Width="auto" Height="358" >
+    <Border BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="358" Margin="1,1,0,0" VerticalAlignment="Top" Width="559" CornerRadius="20,20,20,20" Background="White">
+        <Grid  >
+            
+         <!--if there is future test-->
+            <WrapPanel x:Name="HasTest" HorizontalAlignment="Left" Height="156" Margin="26,32,0,0" VerticalAlignment="Top" Width="308">
+                <Label x:Name="numtest" Content="Test Number: " Style="{StaticResource RegularLabel}" Width="119"/>
+                <Label x:Name="numtest2" Content="{Binding numberTest}" Style="{StaticResource RegularLabel}" Width="153" FontWeight="Regular"/>
+
+                <Label x:Name="DateTime" Content="Date: " Style="{StaticResource RegularLabel}" Width="119"/>
+                <Label x:Name="DateTime2" Content="{Binding DateAndHour}" Style="{StaticResource RegularLabel}" Width="153" FontWeight="Regular"/>
+
+                <Label x:Name="address" Content="Exit Address: " Style="{StaticResource RegularLabel}" Width="119"/>
+                <Label x:Name="address2" Content="{Binding StartTest}" Style="{StaticResource RegularLabel}" Width="153" FontWeight="Regular"/>
+             
+                <!-- option of deleteing test-->
+                <Label  Width="303" Height="11"/>
+                <Button x:Name="deleteTest" Content="Delete Test" Style="{StaticResource BlackButtonStyle}" FontSize="15" RenderTransformOrigin="0.705,-0.733" Height="27" Width="99" Click="deleteTest_Click" ToolTip="Delete this test"  ToolTipService.ShowDuration="3000"/>
+            </WrapPanel>
+
+
+            <!--if there is not future test-->
+            <Label x:Name="NoTest" Content="**There is no future test for you " Style="{StaticResource RegularLabel}" Width="Auto" FontWeight="Regular" Margin="22,33,235.8,302.8" Visibility="Hidden"/>
+
+        </Grid>
+
+    </Border>
+</UserControl>

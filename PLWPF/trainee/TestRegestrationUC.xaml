@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="PLWPF.trainee.TestRegestrationUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PLWPF.trainee"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+          
+    d:DesignHeight="340" d:DesignWidth="560" Background="Transparent" Width="auto" Height="358" >
+
+
+    <Border BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="358" Margin="1,1,0,0" VerticalAlignment="Top" Width="559" CornerRadius="20,20,20,20" Background="White">
+        <Grid>
+            <Grid x:Name="SetTest" >
+
+                <!--Text Gray Default, sometimes hidden-->
+                <TextBox Name="OnStreet" HorizontalAlignment="Left" Text="street" VerticalAlignment="Top" VerticalContentAlignment="Center" Foreground="Gray" Margin="48,113,0,0" Height="19" Width="163" BorderBrush="{x:Null}" Background="{x:Null}" IsEnabled="False"/>
+                <TextBox Name="OnBuilding" HorizontalAlignment="Left" Text="Building" VerticalAlignment="Top" VerticalContentAlignment="Center" Foreground="Gray" Margin="48,142,0,0" Height="19" Width="131" BorderBrush="{x:Null}" Background="{x:Null}" IsEnabled="False"/>
+                <TextBox Name="OnCity" HorizontalAlignment="Left" Text="City" VerticalAlignment="Top" VerticalContentAlignment="Center" Foreground="Gray" Margin="48,171,0,0" Height="19" Width="131" BorderBrush="{x:Null}" Background="{x:Null}" IsEnabled="False"/>
+
+
+                <!--test choices-->
+                <WrapPanel HorizontalAlignment="Left" Height="205" Margin="46,40,0,0" VerticalAlignment="Top" Width="233">
+                    <Label x:Name="label_Copy2" Content="Choose a Date:" Style="{StaticResource RegularLabel}" Height="20" Width="220"/>
+                    <DatePicker x:Name="DateForTest" Width="101"  DisplayDateStart="{x:Static sys:DateTime.Today}" />
+                    <ComboBox x:Name="chooseHour" Width="64"/>
+
+                    <Label x:Name="label_Copy6" Content="Enter Start Address:" Style="{StaticResource RegularLabel}" Height="20" Width="220"/>
+                    <Label x:Name="label_Copy1" Content="Label" Height="8" Width="144" Foreground="{x:Null}"/>
+
+                    <TextBox x:Name="street"  Style="{StaticResource OpenTextBox}" Width="165" GotFocus="Address_GotFocus" LostFocus="Address_LostFocus" Background="Transparent" />
+                    <Label x:Name="label" Content="Label" Height="8" Width="144" Foreground="{x:Null}"/>
+                    <TextBox x:Name="building"  Style="{StaticResource OpenTextBox}" Width="165"  GotFocus="Address_GotFocus" LostFocus="Address_LostFocus" Background="Transparent" />
+                    <Label x:Name="label_Copy" Content="Label" Height="8" Width="144" Foreground="{x:Null}"/>
+                    <TextBox x:Name="city"    Style="{StaticResource OpenTextBox}" Width="165"  GotFocus="Address_GotFocus" LostFocus="Address_LostFocus" Background="Transparent" KeyUp="city_KeyUp"/>
+                </WrapPanel>
+                <Button x:Name="setTest" Content="Set a Test"  Style="{StaticResource BlackButtonStyle}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="139" Height="26"  Padding="1,-4,1,-2" Margin="53,198,0,0" Click="update_Click" ToolTip="Set new test"  ToolTipService.ShowDuration="3000"/>
+            </Grid>
+
+            <!--Border test properity, usually hidden-->
+            <Border x:Name="AboutTheTest" CornerRadius="15" BorderBrush="#FF0C1F31"  HorizontalAlignment="Center" BorderThickness="1" Margin="120,76,108.8,166.8" Background="Transparent" Width="328" Visibility="Hidden"   >
+                <Grid >
+                    <Label x:Name= "Title"  Style="{StaticResource RegularLabel}" Content="The test has been set  successfully to:" Width="Auto" Height="Auto"  FontWeight="Bold" Margin="23,4,-23,-3.6"  />
+                    <Label x:Name= "DateProperty"  Style="{StaticResource RegularLabel}"  HorizontalContentAlignment="Center"  Width="Auto" Height="Auto"   FontWeight="Regular" FontSize="15" Margin="33,29,38.4,61" />
+                    <Label x:Name= "Title_Copy"  Style="{StaticResource RegularLabel}" Content="Exit Address:" Width="Auto" Height="Auto"  FontWeight="Bold" Margin="110,53,110.4,34"  />
+                    <Label x:Name= "AddProperty"  Style="{StaticResource RegularLabel}"  HorizontalContentAlignment="Center"  Width="Auto" Height="Auto"   FontWeight="Regular" FontSize="15" Margin="33,76,38.4,14" />
+                </Grid>
+            </Border>
+
+
+        </Grid>
+    </Border>
+</UserControl>

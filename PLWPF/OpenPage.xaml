@@ -1,0 +1,13 @@
+﻿<Window x:Class="PLWPF.OpenPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+            xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="OpenPage"  WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="Transparent" Width="650" Height="400" Icon="pictures/ICON-02-01.png" >
+    <Grid>
+        <Image gif:ImageBehavior.AnimatedSource="pictures\אייקון-עם-צל.gif"  gif:ImageBehavior.RepeatBehavior="1x"/>
+    </Grid>
+</Window>

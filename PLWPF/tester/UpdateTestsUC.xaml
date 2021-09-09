@@ -1,0 +1,103 @@
+﻿<UserControl x:Class="PLWPF.tester.UpdateTestsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+       xmlns:local="clr-namespace:PLWPF.Admin"
+               xmlns:BE="clr-namespace:BE;assembly=BE" 
+             xmlns:BL="clr-namespace:BL;assembly=BL"
+             mc:Ignorable="d" 
+     d:DesignHeight="340" d:DesignWidth="560" Background="Transparent" Width="auto" Height="358" >
+    <!--Border Resources: white page -->
+    <Border BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left"  Height="358" Margin="1,1,0,0" VerticalAlignment="Top" Width="559" CornerRadius="20,20,20,20" Background="White">
+
+        <!--Second Grid, updating-->
+        <Grid Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="278*"/>
+                <ColumnDefinition Width="0*"/>
+                <ColumnDefinition Width="279*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="outsideGrid" Visibility="Hidden" Background="Transparent" Grid.ColumnSpan="3" Margin="0,0,-296.2,-0.2"  Height="357" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="853">
+                <Border x:Name="AboutTheTest" CornerRadius="15" BorderBrush="#FF0C1F31"  HorizontalAlignment="Center" BorderThickness="1"  Background="Transparent" Width="301" Margin="234,57,318,154" >
+                    <WrapPanel x:Name="TestProperty" HorizontalAlignment="Left" Height="123" Margin="9.2,10.2,0,0" VerticalAlignment="Top" Width="283">
+                        <Label x:Name="numberOfTest" Content="Test Number:" Style="{StaticResource RegularLabel}" Height="25" Width="110"/>
+                        <Label x:Name="p_numbertest" Content="{Binding Text, ElementName=numberTest,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource RegularLabel}" FontWeight="Regular" Height="25" Width="169"/>
+
+                        <Label x:Name="DateAndHour" Content="Date:" Style="{StaticResource RegularLabel}" Height="25" Width="110"/>
+                        <Label x:Name="p_Date" Content="{Binding DateAndHour, Mode=TwoWay}" Style="{StaticResource RegularLabel}" FontWeight="Regular" Height="25" Width="169"/>
+
+                        <Label x:Name="carType" Content="Car Type:" Style="{StaticResource RegularLabel}" Height="25" Width="110"/>
+                        <Label x:Name="p_carType" Content="{Binding car, Mode=TwoWay}" Style="{StaticResource RegularLabel}" FontWeight="Regular" Height="25" Width="169"/>
+
+                        <Label x:Name="traineeId" Content="Trainee ID:" Style="{StaticResource RegularLabel}" Height="25" Width="110"/>
+                        <Label x:Name="p_traineeId" Content="{Binding StudentId, Mode=TwoWay}" Style="{StaticResource RegularLabel}" FontWeight="Regular" Height="25" Width="169"/>
+
+                        <Label x:Name="testerId" Content="Tester ID:" Style="{StaticResource RegularLabel}" Height="25" Width="110"/>
+                        <Label x:Name="p_testerId" Content="{Binding TesterId, Mode=TwoWay}" Style="{StaticResource RegularLabel}" FontWeight="Regular" Height="25" Width="169"/>
+                    </WrapPanel>
+
+                </Border>
+
+                <Grid x:Name="LeftSide" HorizontalAlignment="Left" Margin="-10,-28,0,0" Background="Transparent" Width="301"  >
+                    <WrapPanel x:Name="TestUpdateProperty" HorizontalAlignment="Left" Grid.Column="0" Width="196" Margin="29,38,0,-12">
+                        <Label x:Name="testDetail" Content="update test details:" Style="{StaticResource RegularLabel}" Height="35" Width="178" FontSize="18"/>
+                        <Label x:Name="KeptDistance" Content="Kept Distance" Style="{StaticResource RegularThinLabel}"/>
+                        <Label x:Name="reverseParking" Content="Reverse Parking" Style="{StaticResource RegularThinLabel}"/>
+                        <Label x:Name="mirrors" Content="mirrors" Style="{StaticResource RegularThinLabel}"/>
+                        <Label x:Name="signal" Content="signal" Style="{StaticResource RegularThinLabel}"/>
+                        <Label x:Name="speed" Content="speed" Style="{StaticResource RegularThinLabel}"/>
+                        <Label x:Name="TesterInvolved" Content="Tester Involved" Style="{StaticResource RegularThinLabel}"/>
+                        <Label x:Name="EnterToJuction" Content="Enter To Juction" Style="{StaticResource RegularThinLabel}"/>
+
+                        <Label x:Name="PrepareToDrive" Content="Prepare To Drive" Style="{StaticResource RegularThinLabel}"/>
+                        <Label Width="223" Height="5"/>
+                        <!--<Border Height="79" Width="166" BorderBrush="Black" CornerRadius="15" BorderThickness="1">
+                        </Border>-->
+
+                        <RichTextBox x:Name="testerNote"   FontSize="12" SpellCheck.IsEnabled="True" LostFocus="testerNote_LostFocus" Foreground="#FF0C1F31" Height="94" Width="165"  Background="Transparent" Margin="-1,-1,-0.6,-0.8">
+
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run Text="{Binding details/TesterNote}"/>
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+                        <!--<TextBox x:Name="testerNote"   Text="{Binding details/TesterNote}" LostFocus="testerNote_LostFocus" Style="{StaticResource OpenTextBox}" Foreground="#FF0C1F31" Height="94" Width="165"  Background="Transparent" Margin="-1,-1,-0.6,-0.8" />-->
+
+                    </WrapPanel>
+                    <StackPanel x:Name="checkBoxs" Grid.Column="0" Margin="178,81,68.4,77.8">
+                        <CheckBox x:Name="DistanceCheckBox" Style="{StaticResource CheckBoxStyle}" Click="checkBox_Checked"/>
+                        <CheckBox x:Name="reverseParkingCheckBox" Style="{StaticResource CheckBoxStyle}" Click="checkBox_Checked"/>
+                        <CheckBox x:Name="mirrorsCheckBox" Style="{StaticResource CheckBoxStyle}" Click="checkBox_Checked"/>
+                        <CheckBox x:Name="signalCheckBox" Style="{StaticResource CheckBoxStyle}" Click="checkBox_Checked"/>
+                        <CheckBox x:Name="speedCheckBox" Style="{StaticResource CheckBoxStyle}" Click="checkBox_Checked"/>
+                        <CheckBox x:Name="TesterInvolvedCheckBox" Style="{StaticResource CheckBoxStyle}" Click="checkBox_Checked"/>
+                        <CheckBox x:Name="EnterToJuctionCheckBox" Style="{StaticResource CheckBoxStyle}" Click="checkBox_Checked"/>
+                        <CheckBox x:Name="PrepareToDriveCheckBox" Style="{StaticResource CheckBoxStyle}" Click="checkBox_Checked"/>
+                    </StackPanel>
+                </Grid>
+
+            </Grid>
+
+            <!--enter page grid-->
+            <Grid x:Name="numTestGrid"  Visibility="Visible" Background="Transparent" Grid.ColumnSpan="3" Margin="0,10,-14.2,-10.2" >
+                <Label x:Name="numberTestLabel" Content="Enter number of test:" Style="{StaticResource RegularLabel}" Margin="184,91,184.8,244.8" Width="Auto" Grid.ColumnSpan="3" />
+                <TextBox x:Name="numberTest" MaxLength="8" Style="{StaticResource OpenTextBox}"  Grid.ColumnSpan="3" Margin="207,117,215.8,218.8" Visibility="Visible" KeyUp="numberTest_KeyUp"/>
+                <Button x:Name="findTestButton" Grid.ColumnSpan="3" Content="go" HorizontalAlignment="Left" Margin="238,151,0,0" VerticalAlignment="Top" Width="75" Style="{StaticResource BlackButtonStyle}" Click="findTestButton_Click"/>
+            </Grid>
+
+            <Button x:Name="updateButton" Content="update" Grid.Column="2" HorizontalAlignment="Left" Height="26" Margin="94.4,301,0,0" VerticalAlignment="Top" Width="85" Style="{StaticResource BlackButtonStyle}" Click="updateButton_Click" Visibility="Hidden"/>
+
+
+
+            <!--updated succefully-->
+            <Grid x:Name="resultGrid" Background="Transparent" Visibility="Hidden" Grid.ColumnSpan="3" Margin="0,0,278.8,-0.2">
+                <Label x:Name="FinalOutcomeTitle" Content="Test Updated Successfully! &#xA;       The Final Result:" Style="{StaticResource RegularLabel}" Height="Auto" Width="Auto" RenderTransformOrigin="1.176,1.431" Margin="172,103,-107.4,200.8"/>
+                <Label x:Name="FinalOutcome"  Style="{StaticResource  RegularThinLabel}" Margin="248,156,-34.4,154.8" Width="Auto" Height="Auto"/>
+                <!--Content="{Binding FinalOutcome, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"-->
+            </Grid>
+        </Grid>
+    </Border>
+
+</UserControl>

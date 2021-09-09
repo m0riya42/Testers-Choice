@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="PLWPF.Admin.ListOfTestUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PLWPF.Admin"
+             xmlns:BE="clr-namespace:BE;assembly=BE" 
+             xmlns:BL="clr-namespace:BL;assembly=BL"
+             mc:Ignorable="d" 
+     d:DesignHeight="340" d:DesignWidth="560" Background="Transparent" Width="auto" Height="358" >
+    <Border BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left"  Height="358" Margin="1,1,0,0" VerticalAlignment="Top" Width="559" CornerRadius="20,20,20,20" Background="White">
+
+        <Grid Margin="0.2,-0.8,-0.4,-0.4">
+            <TabControl Name="TabControlTest" SelectionChanged="TabControlTest_SelectionChanged" Margin="0,0,0,20" BorderBrush="Transparent">
+                <TabItem Name="AllTestsTab" Margin="-1,0,-19.4,-0.2" Header="All Tests" Width="86" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" >
+                    <Grid Background="Transparent" Margin="0,0,0,-1.2" >
+                        <ListView Name="lvUsers" GridViewColumnHeader.Click="GridViewColumnHeaderClickedHandler" HorizontalContentAlignment="Center" HorizontalAlignment="Center" BorderBrush="Transparent" Background="Transparent" Margin="1,2,-1,0" Width="552"   >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Number Test" Width="90" DisplayMemberBinding="{Binding numberTest}" />
+                                    <GridViewColumn Header="Car Type" Width="90" DisplayMemberBinding="{Binding car}" />
+                                    <GridViewColumn Header="Date" Width="90" DisplayMemberBinding="{Binding DateAndHour.Date}" />
+                                    <GridViewColumn Header="Is Passed?" Width="90" DisplayMemberBinding="{Binding FinalOutcome}" />
+                                    <GridViewColumn Header="Tester ID" Width="90" DisplayMemberBinding="{Binding TesterId}" />
+                                    <GridViewColumn Header="Trainee ID" Width="90" DisplayMemberBinding="{Binding StudentId}" />
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+                <TabItem Name="GroupByDateTab" Margin="-0.4,0,-18.8,-0.2" Header="Group By Date" Width="Auto" HorizontalAlignment="Stretch" Height="25"  >
+                    <Grid Background="Transparent" Margin="0,0,0,-1.2" >
+                        <ListView Name="GroupDate"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" BorderBrush="Transparent" Background="Transparent" Margin="1,2,-1,0" Width="552"   >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Number Test" Width="90" DisplayMemberBinding="{Binding numberTest}" />
+                                    <GridViewColumn Header="Car Type" Width="90" DisplayMemberBinding="{Binding car}" />
+                                    <GridViewColumn Header="Date" Width="90" DisplayMemberBinding="{Binding DateAndHour.Date}" />
+                                    <GridViewColumn Header="Is Passed?" Width="90" DisplayMemberBinding="{Binding FinalOutcome}" />
+                                    <GridViewColumn Header="Tester ID" Width="90" DisplayMemberBinding="{Binding TesterId}" />
+                                    <GridViewColumn Header="Trainee ID" Width="90" DisplayMemberBinding="{Binding StudentId}" />
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+                <TabItem Name="GroupByCarTab" Margin="20.6,0,-40,-0.2" Header="Group By Car" Width="Auto" HorizontalAlignment="Stretch" Height="25"  >
+                    <Grid Background="Transparent" Margin="0,0,0,-1.2" >
+                        <ListView Name="GroupCarType"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" BorderBrush="Transparent" Background="Transparent" Margin="1,2,-1,0" Width="552"   >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Number Test" Width="90" DisplayMemberBinding="{Binding numberTest}" />
+                                    <GridViewColumn Header="Car Type" Width="90" DisplayMemberBinding="{Binding car}" />
+                                    <GridViewColumn Header="Date" Width="90" DisplayMemberBinding="{Binding DateAndHour.Date}" />
+                                    <GridViewColumn Header="Is Passed?" Width="90" DisplayMemberBinding="{Binding FinalOutcome}" />
+                                    <GridViewColumn Header="Tester ID" Width="90" DisplayMemberBinding="{Binding TesterId}" />
+                                    <GridViewColumn Header="Trainee ID" Width="90" DisplayMemberBinding="{Binding StudentId}" />
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+                <TabItem Name="GroupByResultTab" Margin="40.2,0,-50,-0.2" Header="Group By Final Outcome" Width="Auto" HorizontalAlignment="Stretch" Height="25"  >
+                    <Grid Background="Transparent" Margin="0,0,0,-1.2" >
+                        <ListView Name="GroupFinalResult"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" BorderBrush="Transparent" Background="Transparent" Margin="1,2,-1,0" Width="552"   >
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Number Test" Width="90" DisplayMemberBinding="{Binding numberTest}" />
+                                    <GridViewColumn Header="Car Type" Width="90" DisplayMemberBinding="{Binding car}" />
+                                    <GridViewColumn Header="Date" Width="90" DisplayMemberBinding="{Binding DateAndHour.Date}" />
+                                    <GridViewColumn Header="Is Passed?" Width="90" DisplayMemberBinding="{Binding FinalOutcome}" />
+                                    <GridViewColumn Header="Tester ID" Width="90" DisplayMemberBinding="{Binding TesterId}" />
+                                    <GridViewColumn Header="Trainee ID" Width="90" DisplayMemberBinding="{Binding StudentId}" />
+
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                </TabItem>
+
+                <!--<ListView  x:Name="listViewGroups" Background="Transparent">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderThickness="0" BorderBrush="Transparent">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Path=Key}" FontSize="20" Foreground="Black" TextAlignment="Center" />
+                                <Border BorderThickness="2" BorderBrush="Black" Margin="5">
+                                    <ListView ItemsSource="{Binding}" FontSize="10">
+                                        -->
+                <!--<ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <local:StudentTemplateUserControl>
+
+                                        </local:StudentTemplateUserControl>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>-->
+                <!--
+                                    </ListView>
+                                </Border>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+            </TabControl>
+        </Grid>
+    </Border>
+</UserControl>

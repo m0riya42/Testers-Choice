@@ -1,0 +1,110 @@
+﻿<Window x:Class="PLWPF.trainee.STATICS"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF.trainee"
+       xmlns:BE="clr-namespace:BE;assembly=BE" 
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+  
+             xmlns:BL="clr-namespace:BL;assembly=BL"
+        mc:Ignorable="d"
+        Title="STATICS"  Height="500" Width="800" WindowStyle="None" MouseDown="Window_MouseDown" Background="Transparent" AllowsTransparency="True" Icon="/PLWPF;component/pictures/ICON-02-01.png"  >
+
+
+    <Border x:Name="MainBorder" Background="white" CornerRadius="20" BorderBrush="#FF0C1F31" BorderThickness="1">
+        <Grid x:Name="MainGrid"   >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33.6" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--exit border-->
+            <Border Background="#FF0C1F31" CornerRadius="20,20,0,0"  HorizontalAlignment="Center" Width="800" Grid.Row="0"    >
+                <Button x:Name="exit" Style="{StaticResource ExitButtonStyle}"  Click="exit_Click" Margin="0,0,0,-0.4" Height="Auto" HorizontalAlignment="Right" Width="40" />
+            </Border>
+
+            <!--new grid-->
+            <Grid Margin="6,9.4,5.4,5" Grid.Row="1">
+                <Label  Style="{StaticResource SortTitle}"   Content="Tests Failure statistics"      HorizontalAlignment="Center"  HorizontalContentAlignment="Center" Margin="346,4,246,413.6" Width="195"/>
+                <Label Style="{StaticResource RegularThinLabel}" FontSize="14" Content="The diagram shows the failures criterions in the tests.  Each color represent a different test. " Margin="140,32,54,399.6" Width="593" Height="Auto" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" TextOptions.TextHintingMode="Animated" HorizontalContentAlignment="Center"/>
+
+                <!--diagrama-->
+                <lvc:CartesianChart x:Name="TestFailer"
+                            Series="{Binding SeriesCollection}"
+                            LegendLocation="Left" MinHeight="150" MaxHeight="400" Height="280" VerticalAlignment="Top" HorizontalAlignment="Left" Width="673" Margin="74,78,0,0" >
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis 
+                          Labels="{Binding Labels}"  FontSize="10"  Foreground="Black" FontWeight="Bold" AllowDrop="False" ShowLabels="True" Focusable="True"  Position="LeftBottom" IsHitTestVisible="True"
+                          Separator="{x:Static lvc:DefaultAxes.CleanSeparator}" SnapsToDevicePixels="True"/>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis  IsHitTestVisible="True" FontSize="10"  Foreground="Black" FontWeight="Bold"
+                          LabelFormatter="{Binding Formatter}" >
+                        </lvc:Axis>
+                    </lvc:CartesianChart.AxisY>
+                </lvc:CartesianChart>
+                
+                
+                <!--labels titles-->
+                <Label  Style="{StaticResource RegularThinLabel}" Content="Number of tests"  HorizontalAlignment="Center"
+                    HorizontalContentAlignment="Center" Margin="-39,206,670,211.6" Width="156" FontSize="16" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Height="Auto" >
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+                <Label  Style="{StaticResource RegularThinLabel}" Content="Test Criterion"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="388,400,269,24.6" Width="130" FontSize="16" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" />
+
+                <!--arrows-->
+                <Image x:Name="image" HorizontalAlignment="Left" Height="47
+                       " Margin="165,388,0,0" VerticalAlignment="Top" Width="237" Source="/PLWPF;component/pictures/arrow_03.gif"/>
+                <Image x:Name="image_Copy" HorizontalAlignment="Left" Height="47" Margin="514,388,0,0" VerticalAlignment="Top" Width="237" Source="/PLWPF;component/pictures/arrow_03.gif" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image x:Name="image_Copy1" HorizontalAlignment="Left" Height="28" Margin="-25,336,0,0" VerticalAlignment="Top" Width="121
+                       " Source="/PLWPF;component/pictures/arrow_03.gif" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+                <Image x:Name="image_Copy2" HorizontalAlignment="Left" Height="28" Margin="-25,79,0,0" VerticalAlignment="Top" Width="121" Source="/PLWPF;component/pictures/arrow_03.gif" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="90"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+
+            </Grid>
+            
+                <!-- showing the labels that arnt working-->        
+            <Label  Style="{StaticResource RegularThinLabel}" FontSize="9" Content="reverse Parking"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="247,353.4,421.4,85.6" Width="130"  FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Grid.Row="1" />
+            <Label  Style="{StaticResource RegularThinLabel}" Content="signals"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="380,353.4,288.4,85.6" Width="130" FontSize="9" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Grid.Row="1" />
+            <Label  Style="{StaticResource RegularThinLabel}" Content="Tester Involved"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="509,353.4,159.4,85.6" Width="130" FontSize="9" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Grid.Row="1" />
+            <Label  Style="{StaticResource RegularThinLabel}" Content="Prepare To Drive"  HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="660,352.4,8.4,86.6" Width="130" FontSize="9" FontWeight="Bold" RenderTransformOrigin="0.5,0.5" Grid.Row="1" />
+
+
+        </Grid>
+    </Border>
+</Window>
+           

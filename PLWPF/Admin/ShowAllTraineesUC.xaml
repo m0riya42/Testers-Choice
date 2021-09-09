@@ -1,0 +1,148 @@
+﻿<UserControl x:Class="PLWPF.Admin.ShowAllTraineesUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PLWPF.Admin"
+               xmlns:BE="clr-namespace:BE;assembly=BE" 
+             xmlns:BL="clr-namespace:BL;assembly=BL"
+             mc:Ignorable="d" 
+     d:DesignHeight="340" d:DesignWidth="560" Background="Transparent" Width="auto" Height="358" >
+
+    <!--<UserControl.Resources>
+        <local:CountList x:Key="count"/>
+    </UserControl.Resources>-->
+
+    <!--Border Resources: white page -->
+    <Border BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left"  Height="357" Margin="1,2,0,-0.6" VerticalAlignment="Top" Width="558" CornerRadius="20,20,20,20" Background="White">
+        <Grid>
+
+
+            <TabControl x:Name="MyLIsts" BorderBrush="Transparent" Background="Transparent"  SelectionChanged="TabControl_SelectionChanged"
+                         
+                         >
+
+                <!--first tab_____show all-->
+                <TabItem Header="Show All Trainees" FontSize="14"  >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition Height="*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <!--Sort choices-->
+                        <WrapPanel  Grid.Row="0" Background="#e8ebed">
+                            <Label Content="Sort By:" Height="34" Width="75" Style="{StaticResource SortTitle}" />
+                            <RadioButton x:Name="NameChoice" Content="Name" Height="17" GroupName="Sort By" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="4,-3,0,0" Width="91" Checked="Choice_Checked"/>
+                            <RadioButton x:Name="AgeChoice" Content="Age" Height="17" GroupName="Sort By" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="4,-3,0,0" Width="88" Checked="Choice_Checked"/>
+                            <RadioButton x:Name="CarTypeChoice" Content="Car Type" Height="17" GroupName="Sort By" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="4,-3,0,0" Width="100" Checked="Choice_Checked"/>
+                            <RadioButton x:Name="NUmLessonChoice" Content="Number Of Lessons" Height="17" GroupName="Sort By" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="4,-3,0,0" Width="157" Checked="Choice_Checked"/>
+                        </WrapPanel>
+
+
+                        <Border CornerRadius="0,0,15,15" Grid.Row="1" Background="#e8ebed" Margin="0,241.4,0.2,0.2" Grid.RowSpan="2">
+                            <Grid>
+                                <TextBlock Text="Total Trainees: "  Margin="364,31,88.2,-11" Foreground="Black"/>
+                                <Border Margin="461,30,38.2,4" Background="#faf6fb" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                                    <Label x:Name="CalNum" Padding="5,-1,4,5" HorizontalContentAlignment="Center"  />
+                                </Border>
+                            </Grid>
+                        </Border>
+
+
+                        <!--table of students-->
+                        <Border CornerRadius="5,5,15,15" BorderBrush="Gray"  BorderThickness="1" Grid.Row="1" Background="White">
+                            <ListView Name="lvUsers"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" BorderBrush="Transparent" Background="Transparent"  >
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="ID" Width="90" DisplayMemberBinding="{Binding Id}"/>
+                                        <GridViewColumn Header="First Name" Width="90" DisplayMemberBinding="{Binding Name}" />
+                                        <GridViewColumn Header="Last Name" Width="90" DisplayMemberBinding="{Binding LName}" />
+                                        <GridViewColumn Header="Birthday" Width="90" DisplayMemberBinding="{Binding Birthday}" />
+                                        <GridViewColumn Header="Car Type" Width="90" DisplayMemberBinding="{Binding car}" />
+                                        <GridViewColumn Header="Lessons" Width="100" DisplayMemberBinding="{Binding NumLessons}" />
+
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Border>
+
+
+
+
+
+                    </Grid>
+
+                </TabItem>
+
+
+                <!--second tab_____show all by criterion-->
+
+                <TabItem Header="Split Trainees By Criterion" FontSize="14" Width="206" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="9*"/>
+                            <RowDefinition Height="*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <!--Sort choices-->
+                        <WrapPanel  Grid.Row="0" Background="#e8ebed">
+                            <Label Content="Group By:" Height="34" Width="90" Style="{StaticResource SortTitle}" />
+                            <RadioButton x:Name="CarTypeChoice1" Content="Name" Height="17" GroupName="Sort By" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="4,-3,0,0" Width="100" Checked="Choice_CheckedGrouping"/>
+                            <RadioButton x:Name="NameChoice1" Content="Gender" Height="17" GroupName="Sort By" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="4,-3,0,0" Width="91" Checked="Choice_CheckedGrouping"/>
+                            <RadioButton x:Name="AgeChoice1" Content="GearBox" Height="17" GroupName="Sort By" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="4,-3,0,0" Width="88" Checked="Choice_CheckedGrouping"/>
+                            <RadioButton x:Name="NUmLessonChoice1" Content="Number Of Tests" Height="17" GroupName="Sort By" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="4,-3,0,0" Width="157" Checked="Choice_CheckedGrouping"/>
+                        </WrapPanel>
+
+
+                        <Border CornerRadius="0,0,15,15" Grid.Row="1" Background="#e8ebed" Margin="0,241.4,0.2,0.2" Grid.RowSpan="2">
+                            <Grid>
+                                <TextBlock Text="Total Trainees: "  Margin="364,31,88.2,-11" Foreground="Black"/>
+                                <Border Margin="461,30,38.2,4" Background="#faf6fb" CornerRadius="5" BorderBrush="Gray" BorderThickness="1">
+                                    <Label x:Name="CalNum1" Padding="5,-1,4,5" HorizontalContentAlignment="Center"  />
+                                </Border>
+                            </Grid>
+                        </Border>
+
+
+                        <!--table of students-->
+                        <Border Name="listBorder" CornerRadius="5,5,15,15" BorderBrush="Gray"  BorderThickness="1" Grid.Row="1" Background="White">
+                            <!--<ListView Name="keep"  HorizontalContentAlignment="Center" HorizontalAlignment="Center" BorderBrush="Transparent" Background="Transparent" Margin="3.2,0.2,1.6,0.4" Width="544"  >
+
+                            </ListView>-->
+                        </Border>
+
+
+
+
+
+                    </Grid>
+
+                </TabItem>
+
+            </TabControl>
+
+
+
+            <!--<DataGrid x:Name="GridFutureTests" Margin="9,50,13.8,26.8" BorderBrush="Transparent"  Background="Transparent" IsReadOnly="True" AlternationCount="{Binding Items.Count, RelativeSource={RelativeSource Self}}" EnableRowVirtualization="False" >
+
+                <DataGrid.Columns>
+                  
+                    <DataGridTextColumn Header="Number Test" Width="92" Binding="{Binding numberTest}"/>
+                    <DataGridTextColumn Header="Date Test" Width="*"  Binding="{Binding DateAndHour}"/>
+                    <DataGridTextColumn Header="Address Test" Width="*"  Binding="{Binding StartTest}"/>
+                    <DataGridTextColumn Header="Car Type" Width="75"  Binding="{Binding car}"/>
+                </DataGrid.Columns>
+            </DataGrid>-->
+
+
+            <!--if there is not future test-->
+            <Label x:Name="NoTest" Content="**There is no future tests for you " Style="{StaticResource RegularLabel}" Width="Auto" FontWeight="Regular" Margin="22,33,235.8,302.8" Visibility="Hidden"/>
+
+        </Grid>
+    </Border>
+</UserControl>

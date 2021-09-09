@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="PLWPF.trainee.MyTestsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PLWPF"
+              xmlns:BE="clr-namespace:BE;assembly=BE" 
+             xmlns:BL="clr-namespace:BL;assembly=BL"
+
+             mc:Ignorable="d" 
+     d:DesignHeight="340" d:DesignWidth="560" Background="Transparent" Width="auto" Height="358" >
+
+    <UserControl.Resources>
+        <local:TextConvetor x:Key="Tconvert"/>
+    </UserControl.Resources>
+
+    <Border BorderThickness="1" Grid.Column="1" HorizontalAlignment="Left" Height="358" Margin="1,1,0,0" VerticalAlignment="Top" Width="559" CornerRadius="20,20,20,20" Background="White">
+        <Grid>
+            <Label  Name="titleLabel" Content="My Tests:" Style="{StaticResource RegularLabel}"  FontSize="20" Height="Auto"  HorizontalContentAlignment="Center" Margin="133,15,166.8,292.8" Width="Auto"/>
+            <DataGrid x:Name="GridFutureTests" Margin="9,50,20.8,139.8" BorderBrush="Transparent"  Background="Transparent"  IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Number Test" Width="92" Binding="{Binding numberTest}"/>
+                    <DataGridTextColumn Header="Date Test" Width="*"  Binding="{Binding DateAndHour}"/>
+                    <DataGridTextColumn Header="Car Type" Width="100"  Binding="{Binding car}"/>
+                    <DataGridTextColumn Header="Is Passed:" Width="100"  Binding="{Binding FinalOutcome}"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+
+            <WrapPanel Name="TesterNoteWrap" Margin="29,217,54.8,10.8" >
+                <Separator Height="20" Width="470"/>
+                <Label Content="Tester Note:" FontSize="18" Style="{StaticResource RegularLabel}" Height="Auto" Width="452"/>
+
+                <Rectangle Height="7" Width="460"/>
+
+                <Label Content="Choose Test:" Style="{StaticResource RegularThinLabel}"  Height="Auto" Width="Auto"/>
+                <ComboBox x:Name="TestChoice" HorizontalAlignment="Left" Height="20"  VerticalAlignment="Top" Width="100" SelectionChanged="TestChoice_SelectionChanged"/>
+                <Rectangle Height="67" Width="14"/>
+
+                <TextBox Name="Notes" Height="67" Width="250" IsEnabled="False" />
+            </WrapPanel>
+
+
+
+
+            <!--if there is not future test-->
+            <Label x:Name="NoTest" Content="**There is no tests to introduce " Style="{StaticResource RegularLabel}" Width="Auto" FontWeight="Regular" Margin="22,33,235.8,302.8" Visibility="Hidden"/>
+            <Button x:Name="stat" Content="results and statics"  Style="{StaticResource BlueButtonStyle}" FontSize="13" HorizontalAlignment="Left" VerticalAlignment="Top" Width="141" Height="26"  Padding="1,-4,1,-2" Margin="406,234,0,0" Click="stat_Click" ToolTip="new page with tests results and sstatics"  ToolTipService.ShowDuration="3000"/>
+
+        </Grid>
+    </Border>
+</UserControl>
