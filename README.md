@@ -55,8 +55,7 @@ The system has unique message box.
 * The Trainee can register to test.
 * The Trainee can watch his tests details informaion.
 
-
-<img src="https://user-images.githubusercontent.com/44200760/132762217-f7ec075d-0a07-446e-863d-5b39fb94e658.png" width="280">
+<img src="https://user-images.githubusercontent.com/44200760/132768348-6c6324e3-0067-4148-b398-7edfe5c98a56.gif" width="320">
 
 #### Testers Options
 * The Tester can edit his details information- including his profile image.
@@ -65,8 +64,8 @@ The system has unique message box.
 * The Tester can update wheter the trainee has past the test.
 * The Tester can send a special request to the Administrator, the text-box has Spell checking.
 
-<img src="https://user-images.githubusercontent.com/44200760/132760684-927f645b-521f-4e07-9897-991642e019fb.png" width="280">
-<img src="https://user-images.githubusercontent.com/44200760/132760931-7919c818-782c-4165-bad9-55d8b552c9d6.png" width="280">
+<img src="https://user-images.githubusercontent.com/44200760/132760684-927f645b-521f-4e07-9897-991642e019fb.png" width="320">
+<img src="https://user-images.githubusercontent.com/44200760/132760931-7919c818-782c-4165-bad9-55d8b552c9d6.png" width="240">
 
 
 #### Administrator Options
@@ -76,10 +75,7 @@ The system has unique message box.
 * The Adimnistrator can delete user.
 * The Administrator has Statistic's chart to analayze the data of the system.
 
-
-<img src="https://user-images.githubusercontent.com/44200760/130371682-88093ce3-67e9-4243-8298-b9fb9e87358d.png" alt="" width="280">
-<img src="https://user-images.githubusercontent.com/44200760/130371703-1ddf561b-e27a-4375-84b0-a20425165c8e.png" alt="" width="280">
-
+<img src= "https://user-images.githubusercontent.com/44200760/132768691-dbba0f49-e5e9-49b2-a2b9-464375c1f55b.gif" width= "320">
 
 
 
