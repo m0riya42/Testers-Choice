@@ -17,6 +17,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace PLWPF
 {
@@ -25,7 +27,10 @@ namespace PLWPF
     /// </summary>
     public partial class ForgotPassword : Window
     {
-       
+
+        string eMail = ConfigurationManager.AppSettings.Get("Email");
+        string eMail_password = ConfigurationManager.AppSettings.Get("Password");
+
 
         IBL bl = BL.FactoryBL.getBL();
         Trainee ThisTrainee = new Trainee();
@@ -127,7 +132,7 @@ namespace PLWPF
 
 
 
-            string from = "HelpMail384@gmail.com";
+            string from = eMail; 
             MailMessage message = new MailMessage(from, to);
             message.Subject = "Tester's Choice--> Reset Password";
             message.IsBodyHtml = true;
@@ -136,8 +141,8 @@ namespace PLWPF
 
 
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+            NetworkCredential basicCredential = new NetworkCredential(eMail, eMail_password);
 
-            NetworkCredential basicCredential = new NetworkCredential("HelpMail384@gmail.com", "Help_Mail332");
             client.EnableSsl = true;
             client.UseDefaultCredentials = true;
             client.Credentials = basicCredential;

@@ -18,7 +18,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.Configuration;
+using System.Collections.Specialized;
 namespace PLWPF.tester
 {
     /// <summary>
@@ -30,7 +31,9 @@ namespace PLWPF.tester
         IBL bl = BL.FactoryBL.getBL();
         Tester thisTester;
         string keepTesterName;
-        
+        string eMail = ConfigurationManager.AppSettings.Get("Email");
+        string eMail_password = ConfigurationManager.AppSettings.Get("Password");
+
         public SpecialRequestsUC(Tester sentTester)
         {
             thisTester = sentTester;
@@ -71,7 +74,7 @@ namespace PLWPF.tester
             else
             {
 
-                string to = "HelpMail384@gmail.com"; //send mail to the Admin
+                string to = eMail; //send mail to the Admin
                                                      //string mailbody = @"new password: hhh";
                                                      // string read = @"C:\Users\moriy\Downloads\Telegram Desktop\09-01-19\PLWPF\pictures\SentMessage.html";
 
@@ -92,7 +95,7 @@ namespace PLWPF.tester
                 mailbody = mailbody.Replace("###MessageHERE###", textRange.Text.ToString());
 
 
-                string from = "HelpMail384@gmail.com";
+                string from = eMail;
                 MailMessage message = new MailMessage(from, to);
                 message.Subject = "Tester's Choice--> Special Request from-" + keepTesterName;
                 message.IsBodyHtml = true;
@@ -102,7 +105,7 @@ namespace PLWPF.tester
 
                 SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
 
-                NetworkCredential basicCredential = new NetworkCredential("HelpMail384@gmail.com", "Help_Mail332");
+                NetworkCredential basicCredential = new NetworkCredential( eMail,eMail_password);
                 client.EnableSsl = true;
                 client.UseDefaultCredentials = true;
                 client.Credentials = basicCredential;

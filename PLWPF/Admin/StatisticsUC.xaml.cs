@@ -59,7 +59,6 @@ namespace PLWPF.Admin
             {
                 myPieChart.Series.Add(ps);
             }
-
             #endregion
             #region chart-->pie num of ttests
             LiveCharts.SeriesCollection tst = new LiveCharts.SeriesCollection();
