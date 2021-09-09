@@ -1,12 +1,16 @@
 # TestersChoice
 ## Windows Application for Tests in Driving schools
 
-description of the project
+A Management system for Testers and Trainees for Determining driving tests.
 
 ### Important Remarks
 
 * This was the FIRST project in B.Sc studies of Software Engineer.
 * The design of the icon of this project is based on [NESCAFE- TASTER'S CHOICE](https://www.nescafe.com/us/products/), so the copyrights of it belongs to them.
+
+### Packages
+* [LiveCharts](https://lvcharts.net/) - Simple, flexible, powerful and open source data visualization for .Net.
+* [WpfAnimatedGif](https://github.com/XamlAnimatedGif/WpfAnimatedGif) - A simple library to display animated GIF images in WPF.
 
 ### Images
 
@@ -16,9 +20,15 @@ description of the project
 
 <img src="https://user-images.githubusercontent.com/44200760/130371353-3e01fb6c-e893-45e5-87d4-aab19f2c4840.png" alt="image" width="400">
 
-#### <i>Opening page </i>
+#### <i>Opening System </i>
 
-![image](https://user-images.githubusercontent.com/44200760/130371346-d51408d4-e84b-41f3-99dd-14c354dbec5c.png)
+ ##### Openning animation before displaying the System:
+ special animation while the system is loading. 
+ 
+ 
+ ##### Landing page:
+<img src="https://user-images.githubusercontent.com/44200760/130371346-d51408d4-e84b-41f3-99dd-14c354dbec5c.png" alt="Landing page" width="430">
+
 
 #### <i>Register page </i>
 ![image](https://user-images.githubusercontent.com/44200760/130371469-971189c8-cbcf-426a-b231-47b1786ab00b.png)
